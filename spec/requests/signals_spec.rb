@@ -42,11 +42,11 @@ RSpec.describe 'Signals requests', type: :request do
   context 'valid input' do
     describe 'renders proper response' do
       it 'should detect the peaks' do
-        get '/signals/detect_peak', params: { data: [1,1.1,0.9,1,1,1.2,2.5,2.3,2.4,1.1,0.8,1.2,1], threshold: 2 }
+        get '/signals/detect_peak', params: { data: [1,1.1,0.9,1,1,1.2,2.5,2.3,2.4,1.1,0.8,1.2,1], threshold: 1.5 }
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       200
-        expect(body['data']).to eq          [0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0]
+        expect(body['data']).to eq          [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0]
       end
     end
   end
